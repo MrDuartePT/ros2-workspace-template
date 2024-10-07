@@ -1,0 +1,4 @@
+# Compose `requirements.txt` from ROS packages into here.
+
+# Example:
+# -r ./example_module/example_pkg/requirements.txt

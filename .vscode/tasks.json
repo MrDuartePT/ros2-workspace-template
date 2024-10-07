@@ -1,0 +1,40 @@
+{
+  // See https://go.microsoft.com/fwlink/?LinkId=733558
+  // for the documentation about the tasks.json format
+  "version": "2.0.0",
+  "tasks": [
+    // ROS extension is broken; Below tasks created for developer convenience.
+    {
+      "label": "rosdep install dependencies",
+      "type": "shell",
+      "command": "rosdep install --ignore-src --from-path . -y",
+      "problemMatcher": []
+    },
+    {
+      "label": "colcon build all",
+      "type": "shell",
+      "command": "colcon build --symlink-install",
+      "problemMatcher": []
+    },
+    {
+      "label": "colcon build specific",
+      "type": "shell",
+      "command": "colcon build --symlink-install --packages-select ${input:package}",
+      "problemMatcher": []
+    },
+    {
+      "label": "update package index",
+      "type": "shell",
+      "command": "apt-get update && rosdep update",
+      "problemMatcher": []
+    }
+  ],
+  "inputs": [
+    {
+      "id": "package",
+      "description": "Package",
+      "default": "",
+      "type": "promptString"
+    }
+  ]
+}

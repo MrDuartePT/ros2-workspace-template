@@ -1,0 +1,19 @@
+# ROS2
+COLCON_IGNORE
+build/*
+install/*
+log/*
+
+# Python
+__pycache__/
+*.py[cod]
+
+# VS Code
+.vscode/*
+!.vscode/*.json
+
+# Profiling
+*.lprof
+
+# (OPTION) Ignore mount points.
+# /data

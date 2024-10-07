@@ -1,0 +1,31 @@
+// VS Code configuration.
+{
+  "python.autoComplete.extraPaths": [
+    "/opt/ros/humble/lib/python3.10/site-packages",
+    "/opt/ros/humble/local/lib/python3.10/dist-packages"
+  ],
+  "python.analysis.extraPaths": [
+    "/opt/ros/humble/lib/python3.10/site-packages",
+    "/opt/ros/humble/local/lib/python3.10/dist-packages"
+  ],
+  "python.languageServer": "Pylance",
+  "ros.distro": "humble",
+
+  // Format code & sort imports on save.
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.organizeImports": true
+  },
+
+  // Use Prettier to format config files.
+  "[json][jsonc][yaml]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  // Use black to format Python code.
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.black-formatter"
+  },
+  // Make Python import sorting compatible with black.
+  "isort.args": ["--profile", "black"]
+  // NOTE: Insert other ROS client library languages below:
+}

@@ -1,0 +1,48 @@
+// Dev Container configuration.
+// For format details, see https://aka.ms/devcontainer.json.
+// For config options, see the README at:
+// https://github.com/microsoft/vscode-dev-containers/tree/main/containers/docker-existing-docker-compose
+{
+  // (OPTION) Change the name to help identify which workspace you are in.
+  "name": "ROS2 Dev",
+  "dockerComposeFile": "../docker-compose.dev.yml",
+  "service": "dev",
+  "workspaceFolder": "/", // Default
+  // See: https://containers.dev/implementors/json_reference/#lifecycle-scripts
+  // Please follow the same method of creating shell scripts in the `hooks` folder.
+  "postCreateCommand": ". /tmp/.devcontainer/hooks/postCreate.sh",
+  "postStartCommand": ". /tmp/.devcontainer/hooks/postStart.sh",
+  "remoteEnv": {
+    // Declare environment variables for shell scripts in the `hooks` folder.
+    "WORKSPACE_ROOT": "${containerWorkspaceFolder}"
+  },
+  "customizations": {
+    "vscode": {
+      // Extensions in container.
+      "extensions": [
+        // VS Code's Intellisense.
+        "VisualStudioExptTeam.vscodeintellicode",
+        // Useful for inspecting & controlling Docker.
+        "ms-azuretools.vscode-docker",
+        // Format markdown.
+        "DavidAnson.vscode-markdownlint",
+        // Format JSON & other config files.
+        "esbenp.prettier-vscode",
+        // ROS utilities.
+        "ms-iot.vscode-ros",
+        // ROS Message Definitions use CMake.
+        "twxs.cmake",
+        // Python support.
+        "ms-python.python",
+        // Intelligent Python features.
+        "ms-python.vscode-pylance",
+        // Python formatter.
+        "ms-python.black-formatter",
+        // Python import sorter.
+        "ms-python.isort",
+        // Auto-generate Python doc strings.
+        "njpwerner.autodocstring"
+      ]
+    }
+  }
+}

@@ -1,0 +1,22 @@
+# `.gitignore` to `.dockerignore` converter: https://codesandbox.io/s/7e9ox7
+
+# If using named volume to store repository, don't ignore `.devcontainer`.
+
+# Config & Others
+**/.vscode
+**/.git*
+**/docker-compose*
+**/Dockerfile*
+
+# ROS Build Artifacts
+build
+install
+log
+
+# Python Artifacts
+**/__pycache__
+**/*.py[cod]
+**/*.lprof
+
+# (OPTION) Ignore mount points.
+# data
