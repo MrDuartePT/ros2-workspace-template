@@ -60,6 +60,27 @@ RUN apt-get update && apt-get install -y \
 
 RUN update-alternatives --install /usr/bin/python python /usr/bin/python3.10 10
 
+# Install other ROS Packages
+RUN apt-get update && apt-get install -y \
+   ros-humble-joint-state-publisher-gui \
+   ros-humble-urdf-launch \
+   ros-humble-moveit-setup-assistant \
+   ros-humble-moveit-simple-controller-manager \
+   ros-humble-gripper-controllers \
+   ros-humble-ros2-control \
+   ros-humble-moveit-planners \
+   ros-humble-joint-state-broadcaster \
+   ros-humble-joint-trajectory-controller \
+   ros-humble-moveit-resources-panda-moveit-config \
+   ros-humble-moveit-resources-panda-description \
+   ros-humble-camera-calibration
+
+# Install and generate moveit files
+RUN apt install -y python3-colcon-common-extensions \ 
+   python3-colcon-mixin \
+   python3-vcstool \
+   && colcon mixin update default
+
 ENV ENV=\$HOME/.shrc
 RUN echo "exec bash" >> ~/.shrc
 RUN echo "source /opt/ros/$ROS_DISTRO/setup.bash\nsource /code/install/local_setup.bash" >> ~/.bashrc
@@ -69,15 +90,15 @@ RUN echo "source /opt/ros/$ROS_DISTRO/setup.bash\nsource /code/install/local_set
 
 COPY ./entrypoint.sh /entrypoint.sh
 RUN chmod +x /entrypoint.sh
-# (OPTION) Expose rosbridge port & noVNC port respectively.
+# Expose rosbridge port & noVNC port respectively.
 # EXPOSE 9090 6080
 ENTRYPOINT [ \
-  # (OPTION) VNC entrypoint
-  # "/usr/local/share/desktop-init.sh", \
+  # VNC entrypoint
+  #"/usr/local/share/desktop-init.sh", \
   # ROS entrypoint
   "/entrypoint.sh" \
   ]
 
 # (OPTION) Choose between calling roslaunch directly or opening a bash shell.
 # CMD [ "ros2", "launch", "main", "launch.py" ]
-# CMD [ "bash" ]
+CMD [ "bash" ]
