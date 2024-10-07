@@ -25,6 +25,7 @@ services:
       # - $USERPROFILE\Documents\project-name-data:/data:cached # $USERPROFILE (Windows) & $HOME (Linux) are absolute paths too.
       # (OPTION) Legacy support for mounting repository from host filesystem.
       # - .:/code:cached
+      - ./rob_ws:$HOME/rob_ws
 
     # Better process handling by using a process management system (tini).
     init: true

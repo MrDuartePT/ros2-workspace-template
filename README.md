@@ -34,11 +34,11 @@ Template for ROS2 workspace using [VS Code Dev Containers](https://code.visualst
 
 `(OPTION)` marks key options to consider before creating the Dev Container. Some of the `(OPTION)`s work together to activate the features listed below:
 
-### Mount Point `/data`
+### Mount Point `$HOME/rob_ws`
 
 > Note: If using `Dev Containers: Clone Repository in Container Volume...`, the host folder path must be absolute. It is possible to use `$USERPROFILE` (Windows) or `$HOME` (Linux) for absolute paths. Otherwise, the host folder path would be relative to the Docker Compose file location.
 
-Mount points are used to mount a folder from the host into the container. An example for mounting a folder to `/data` is included in [`docker-compose.dev.yml`](./docker-compose.dev.yml) as an `(OPTION)`. `/data` can be used to share anything from the host with the container (e.g., config files, models, databases). Also remember to:
+Mount points are used to mount a folder from the host into the container. An example for mounting a folder to `$HOME/rob_ws` is included in [`docker-compose.dev.yml`](./docker-compose.dev.yml) as an `(OPTION)`. `$HOME/rob_ws` can be used to share anything from the host with the container (e.g., config files, models, databases). Also remember to:
 
 - Add mount points to [`.gitignore`](./.gitignore) and [`.dockerignore`](./.dockerignore).
 - Symlink mount points into your workspace folder for convenience in [`postCreate.sh`](./.devcontainer/hooks/postCreate.sh).
